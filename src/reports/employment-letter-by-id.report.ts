@@ -70,7 +70,7 @@ export const getEmploymentLetterByIdReport = (
         
         Durante su empleo, el Sr./Sra. ${employeeName} ha desempeñado el cargo de ${employeePosition}, demostrando responsabilidad, compromiso y habilidades profesionales en sus labores.
         
-        La jornada laboral del Sr./ Sra. ${employeeName} es de ${employeeHours} horas semanales, con un horario de ${employeeWorkSchedule}, cumpliendo con las políticas y procedimientos establecidos por la empresa. 
+        La jornada laboral del Sr./ Sra. ${employeeName} es de ${employeeHours * 5} horas semanales, con un horario de ${employeeWorkSchedule}, cumpliendo con las políticas y procedimientos establecidos por la empresa. 
         
         Esta constancia se expide a solicitud del interesado para los fines que considere conveniente.`,
         style: 'body',
