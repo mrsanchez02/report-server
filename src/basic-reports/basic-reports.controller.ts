@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Res } from '@nestjs/common';
 import { BasicReportsService } from './basic-reports.service';
 import { Response } from 'express';
+import { continents } from '@prisma/client';
 
 @Controller('basic-reports')
 export class BasicReportsController {
@@ -32,6 +33,29 @@ export class BasicReportsController {
       await this.basicReportsService.employmentLetterById(+employeeId);
     response.setHeader('Content-Type', 'application/pdf');
     pdfDoc.info.Title = 'Employment Letter';
+    pdfDoc.pipe(response);
+    pdfDoc.end();
+  }
+
+  // Countries
+  @Get('countries')
+  async getCountriesReport(@Res() response: Response) {
+    const pdfDoc = await this.basicReportsService.getCountries();
+    response.setHeader('Content-Type', 'application/pdf');
+    pdfDoc.info.Title = 'Here countries...';
+    pdfDoc.pipe(response);
+    pdfDoc.end();
+  }
+
+  @Get('countries/:continent')
+  async getCountriesByContinentReport(
+    @Res() response: Response,
+    @Param('continent') continent: continents,
+  ) {
+    const pdfDoc =
+      await this.basicReportsService.getCountryByContinent(continent);
+    response.setHeader('Content-Type', 'application/pdf');
+    pdfDoc.info.Title = 'Here countries...';
     pdfDoc.pipe(response);
     pdfDoc.end();
   }
