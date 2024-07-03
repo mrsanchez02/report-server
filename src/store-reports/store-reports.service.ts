@@ -15,6 +15,10 @@ export class StoreReportsService extends PrismaClient implements OnModuleInit {
   }
 
   async getOrderByIdReport(orderId: number) {
+    if (!orderId) {
+      throw new NotFoundException('Order ID is required');
+    }
+
     const order = await this.orders.findUnique({
       where: {
         order_id: orderId,
