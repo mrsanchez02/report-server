@@ -121,7 +121,8 @@ export const orderByIdReport = (values: ReportValues): TDocumentDefinitions => {
           },
           `Razón Social: ${customers.customer_name}
           Contacto: ${customers.contact_name}
-          ${customers.address}`,
+          ${customers.address} ${customers.postal_code}, 
+          ${customers.city}, ${customers.country}`,
         ],
       },
       // Tabla del detalle de la orden.
